@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom';
+
 export default function MovieSeats() {
     return(
         <div className='container'>
@@ -57,6 +59,17 @@ export default function MovieSeats() {
                     <p>Indisponível</p>
                 </div>
             </div>
+            <form>
+                <p>Nome do comprador:</p>
+                <input placeholder="Digite seu nome..."/>
+                <p>CPF do comprador:</p>
+                <input placeholder="Digite seu CPF..."/>
+            </form>
+            <Link to="/sucesso">
+                <button>
+                    Reservar assento(s)
+                </button>
+            </Link>
         </div>
     )
 }
