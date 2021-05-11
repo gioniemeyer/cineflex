@@ -2,17 +2,31 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
-import Header from 'Header';
-import Home from 'Home';
-import Footer from 'Footer';
-import MovieSeats from 'MovieSeats';
-import MovieSessions from 'MovieSessions';
-import SuccessPage from 'SuccessPage';
+import Header from './components/Header';
+import Home from './components/Home';
+import Footer from './components/Footer';
+import MovieSeats from './components/MovieSeats';
+import MovieSessions from './components/MovieSessions';
+import SuccessPage from './components/SuccessPage';
 
+import './styles/reset.css';
+import './styles/style.css';
 
 function App() {
 return(
-    <h1>testando</h1>
+    <BrowserRouter>    
+        <Header />
+        <Home />
+
+        <Switch>
+            <Route path="" exact>
+                <Home />
+            </Route>
+
+        </Switch>
+
+        <Footer />
+    </BrowserRouter>
 );
 }
 
