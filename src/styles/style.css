@@ -73,6 +73,43 @@ body {
     margin-right: 20px;
 }
 
+.container-seats {
+    width: 380px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.seat {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #C3CFD9;
+    border: 1px solid #808F9D;
+    font-size: 11px;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.legend {
+    display: flex;
+    width: 380px;
+    justify-content: space-evenly;
+    font-size: 13px;
+}
+
+.legend-topic {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items:center;
+}
+
 .footer {
     width: 100%;
     position: fixed;

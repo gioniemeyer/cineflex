@@ -1,27 +1,60 @@
 export default function MovieSeats() {
     return(
         <div className='container'>
-            <h1>Selecione o horário</h1>
-            <div className='dayOfSession'>
-                <p>Quinta-feira - 24/06/2021</p>
-                <div className='sessions'>
-                    <div className='timeOfSession'>
-                        <p>15:00</p>
-                    </div>
-                    <div className='timeOfSession'>
-                        <p>15:00</p>
-                    </div>
+            <h1>Selecione o assento</h1>
+            <div className='container-seats'>
+                <div className='seat'>
+                    <p>01</p>
+                </div>
+                <div className='seat'>
+                    <p>01</p>
+                </div>
+                <div className='seat'>
+                    <p>01</p>
+                </div>
+                <div className='seat'>
+                    <p>01</p>
+                </div>
+                <div className='seat'>
+                    <p>01</p>
+                </div>
+                <div className='seat'>
+                    <p>01</p>
+                </div>
+                <div className='seat'>
+                    <p>01</p>
+                </div>
+                <div className='seat'>
+                    <p>01</p>
+                </div>
+                <div className='seat'>
+                    <p>01</p>
+                </div>
+                <div className='seat'>
+                    <p>01</p>
+                </div>
+                <div className='seat'>
+                    <p>01</p>
+                </div>
+                <div className='seat'>
+                    <p>01</p>
+                </div>
+                <div className='seat'>
+                    <p>01</p>
                 </div>
             </div>
-            <div className='dayOfSession'>
-                <p>Quinta-feira - 24/06/2021</p>
-                <div className='sessions'>
-                    <div className='timeOfSession'>
-                        <p>15:00</p>
-                    </div>
-                    <div className='timeOfSession'>
-                        <p>15:00</p>
-                    </div>
+            <div className="legend">
+                <div className="legend-topic">
+                <div className='seat'></div>
+                    <p>Selecionado</p>
+                </div>
+                <div className="legend-topic">
+                    <div className='seat'></div>
+                    <p>Disponível</p>
+                </div>
+                <div className="legend-topic">
+                    <div className='seat'></div>
+                    <p>Indisponível</p>
                 </div>
             </div>
         </div>
