@@ -49,6 +49,30 @@ body {
     padding: 8px;
 }
 
+.dayOfSession {
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+.sessions {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.timeOfSession {
+    background-color: #E8833A;
+    color: #fff;
+    font-size: 18px;
+    width: 82px;
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    margin-right: 20px;
+}
+
 .footer {
     width: 100%;
     position: fixed;

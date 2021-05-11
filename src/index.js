@@ -26,11 +26,11 @@ return(
                 <MovieSessions />
             </Route>
 
-            <Route path="/" exact>
+            <Route path="/sessao/IdSession" exact>
                 <MovieSeats />
             </Route>
 
-            <Route path="/" exact>
+            <Route path="/sucesso" exact>
                 <SuccessPage />
             </Route>
         </Switch>
