@@ -1,46 +1,29 @@
-import {Link} from 'react-router-dom';
 import axios from 'axios';
+import {useState, useEffect } from 'react';
+import Movie from './Movie';
+import {Link} from 'react-router-dom';
+
 
 export default function Home() {
+
+    const [moviesList, setMoviesList] = useState([]);
+
+    useEffect(() => {
+        const request = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/movies');
+        request.then( (response) => setMoviesList(response.data));
+    },[])
+
     return(
         <div className='container'>
             <h1>Selecione o filme</h1>
             <div className="movies">
-                <Link to="/filme/id" >
-                <div className="movie">
-                    <img src="https://upload.wikimedia.org/wikipedia/pt/e/e6/Enola_Holmes_poster.jpeg" />           
-                </div>
-                </Link>
-                <Link to="/filme/id" >
-                <div className="movie">
-                    <img src="https://upload.wikimedia.org/wikipedia/pt/e/e6/Enola_Holmes_poster.jpeg" />           
-                </div>
-                </Link>
-                <Link to="/filme/id" >
-                <div className="movie">
-                    <img src="https://upload.wikimedia.org/wikipedia/pt/e/e6/Enola_Holmes_poster.jpeg" />           
-                </div>
-                </Link>
-                <Link to="/filme/id" >
-                <div className="movie">
-                    <img src="https://upload.wikimedia.org/wikipedia/pt/e/e6/Enola_Holmes_poster.jpeg" />           
-                </div>
-                </Link>
-                <Link to="/filme/id" >
-                <div className="movie">
-                    <img src="https://upload.wikimedia.org/wikipedia/pt/e/e6/Enola_Holmes_poster.jpeg" />           
-                </div>
-                </Link>
-                <Link to="/filme/id" >
-                <div className="movie">
-                    <img src="https://upload.wikimedia.org/wikipedia/pt/e/e6/Enola_Holmes_poster.jpeg" />           
-                </div>
-                </Link>
-                <Link to="/filme/id" >
-                <div className="movie">
-                    <img src="https://upload.wikimedia.org/wikipedia/pt/e/e6/Enola_Holmes_poster.jpeg" />           
-                </div>
-                </Link>
+
+                {
+                    moviesList.map( (movie,i) => (
+                        <Movie movie={movie} />
+                     ) )
+                }
+
             </div>
         </div>
     )   
