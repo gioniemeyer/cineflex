@@ -1,8 +1,6 @@
 import axios from 'axios';
 import {useState, useEffect } from 'react';
 import Movie from './Movie';
-import {Link} from 'react-router-dom';
-
 
 export default function Home() {
 
@@ -19,7 +17,7 @@ export default function Home() {
             <div className="movies">
 
                 {
-                    moviesList.map( (movie,i) => (
+                    moviesList.map( (movie) => (
                         <Movie movie={movie} />
                      ) )
                 }

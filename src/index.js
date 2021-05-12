@@ -22,12 +22,12 @@ return(
                 <Home />
             </Route>
             
-            <Route path="/filme/id" exact>
+            <Route path="/sessoes/:idFilme" exact>
                 <MovieSessions />
                 <Footer />
             </Route>
 
-            <Route path="/sessao/IdSession" exact>
+            <Route path="/assentos/:idSessao" exact>
                 <MovieSeats />
                 <Footer />
             </Route>
