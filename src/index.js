@@ -4,10 +4,10 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 import Header from './components/Header';
 import Home from './components/Home';
-import Footer from './components/Footer';
 import MovieSessions from './components/MovieSessions';
 import MovieSeats from './components/MovieSeats';
 import SuccessPage from './components/SuccessPage';
+import Footer from './components/Footer';
 
 import './styles/reset.css';
 import './styles/style.css';
@@ -24,10 +24,12 @@ return(
             
             <Route path="/filme/id" exact>
                 <MovieSessions />
+                <Footer />
             </Route>
 
             <Route path="/sessao/IdSession" exact>
                 <MovieSeats />
+                <Footer />
             </Route>
 
             <Route path="/sucesso" exact>
@@ -35,7 +37,6 @@ return(
             </Route>
         </Switch>
 
-        <Footer />
     </BrowserRouter>
 );
 }

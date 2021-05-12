@@ -116,6 +116,20 @@ form {
     margin-bottom: 30px;
 }
 
+input { margin-bottom: 8px;}
+
+.infos {
+    font-size: 22px;
+    margin-bottom: 20px;
+    line-height: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    word-wrap: normal;
+    text-align: center;
+}
+
 .footer {
     width: 100%;
     position: fixed;
@@ -129,7 +143,6 @@ form {
     padding: 15px;
     color: #293845;
     font-size: 26px;
-    
 }
 
 .footer img {
