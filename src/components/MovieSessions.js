@@ -1,43 +1,43 @@
-import {Link} from 'react-router-dom';
-import { useParams } from "react-router-dom";
-
+import { useEffect, useState } from 'react';
+import {Link, useParams} from 'react-router-dom';
+import axios from 'axios';
 
 export default function MovieSessions() {
-
     const { idFilme } = useParams();
+    const[sessionDays, setSessionDays] = useState([]);
+
+    useEffect( () => {
+        const request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/movies/${idFilme}/showtimes`)
+        request.then( movie => setSessionDays(movie.data.days) );
+    } ,[] );
+
+    console.log(sessionDays);
+
     return(
         <div className='container'>
             <h1>Selecione o horário</h1>
-            <div className='dayOfSession'>
-                <p>Quinta-feira - 24/06/2021</p>
-                <div className='sessions'>
-                    <Link to="/assentos/:idSessao">
-                        <div className='timeOfSession'>
-                            <p>15:00</p>
-                        </div>
-                    </Link>
-                    <Link to="/assentos/:idSessao">
-                        <div className='timeOfSession'>
-                            <p>15:00</p>
-                        </div>
-                    </Link>
-                </div>
-            </div>
-            <div className='dayOfSession'>
-                <p>Quinta-feira - 24/06/2021</p>
-                <div className='sessions'>
-                    <Link to="/assentos/:idSessao">
-                        <div className='timeOfSession'>
-                            <p>15:00</p>
-                        </div>
-                    </Link>
-                    <Link to="/assentos/:idSessao">
-                        <div className='timeOfSession'>
-                            <p>15:00</p>
-                        </div>
-                    </Link>
-                </div>
-            </div>
+                {
+                    sessionDays.map( day => {
+                        return(
+                            <div className='dayOfSession'>
+                                <p>{day.weekday} - {day.date}</p>
+                                <div className='sessions'>
+                                    {
+                                        day.showtimes.map( showtime => {
+                                            return(
+                                                <Link to="/assentos/:idSessao">
+                                                    <div className='timeOfSession'>
+                                                        <p>{showtime.name}</p>
+                                                    </div>
+                                                </Link>
+                                            )
+                                        } )
+                                    }
+                                </div>
+                            </div>                
+                        )
+                    } )
+                }
         </div>
     )
 }
