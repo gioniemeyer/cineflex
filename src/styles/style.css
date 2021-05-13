@@ -96,6 +96,16 @@ body {
     margin-top: 10px;
 }
 
+.taken {
+    background-color: #FBE192;
+    border: 1px solid #F7C52B;
+}
+
+.chosen {
+    background-color: #8DD7CF;
+    border: 1px solid #1AAE9E;
+}
+
 .legend {
     display: flex;
     width: 380px;

@@ -25,7 +25,7 @@ export default function MovieSessions() {
                                     {
                                         day.showtimes.map( showtime => {
                                             return(
-                                                <Link to="/assentos/:idSessao">
+                                                <Link to={`/assentos/${showtime.id}`}>
                                                     <div className='timeOfSession'>
                                                         <p>{showtime.name}</p>
                                                     </div>
