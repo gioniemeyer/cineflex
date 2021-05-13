@@ -11,8 +11,6 @@ export default function MovieSessions() {
         request.then( movie => setSessionDays(movie.data.days) );
     } ,[] );
 
-    console.log(sessionDays);
-
     return(
         <div className='container'>
             <h1>Selecione o horário</h1>
