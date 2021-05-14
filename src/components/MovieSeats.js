@@ -5,13 +5,12 @@ import Legends from './Legends';
 import Form from './Form';
 import Footer from './Footer';
 
-export default function MovieSeats({movieSession, setMovieSession, movieSelected}) {
+export default function MovieSeats({movieSelected, setMovieSelected}) {
 
     let history = useHistory();
     const {idSessao} = useParams();
     const [buyer, setBuyer] = useState("");
     const [cpf, setCpf] = useState('');
-    const [chosenSeats, setChosenSeats] = useState([]);
     const [movieSeats, setMovieSeats] = useState([]);
 
     useEffect( () => {
@@ -22,14 +21,12 @@ export default function MovieSeats({movieSession, setMovieSession, movieSelected
                 x.isChosen = false;
             } )
             setMovieSeats(arrSeats);
-            setMovieSession(resp.data);
+            movieSelected.session = resp.data
+            setMovieSelected(movieSelected)
         })
     } ,[]);
 
-    console.log(movieSession);
-
     function toggleSelection(seat) {
-        const array = [];
         const newMovieSeats = movieSeats.map((item) => {
             if(seat.id === item.id) {
                 if(item.isAvailable) {
@@ -41,22 +38,27 @@ export default function MovieSeats({movieSession, setMovieSession, movieSelected
             return item;
         })
         setMovieSeats(newMovieSeats);
-        for(let i = 0; i < newMovieSeats.length; i++) {
-            if(newMovieSeats[i].isChosen) {
-                array.push(parseInt(newMovieSeats[i].id)); //ver, preciso mudar pra filter
-            }
-        }
-        setChosenSeats(array);
+
+        const array = newMovieSeats.filter(chair => {
+            return chair.isChosen;
+        })
+        const arrayIds = array.map(chair => chair.id);
+        movieSelected.seats = array;
+        movieSelected.chairIds = arrayIds;
+        setMovieSelected(movieSelected);
     }
+
 
     function finishOrder() {
         const infos = {
-            ids: chosenSeats,
+            ids: movieSelected.chairIds,
             name: buyer,
             cpf: cpf           
         }
         const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/seats/book-many',infos);
         promise.then((resp) => {
+            movieSelected.buyer = {name: buyer, cpf: cpf};
+            setMovieSelected(movieSelected);
             history.push('/sucesso')
         });
     }

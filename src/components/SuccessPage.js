@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 
-export default function SuccessPage({movieSelected, movieSession}) {
+export default function SuccessPage({movieSelected}) {
     return(
         <div className='container'>
             <div className="infos">
@@ -9,17 +9,22 @@ export default function SuccessPage({movieSelected, movieSession}) {
             <div className='infos'>
                 <strong>Filme e sessão</strong>
                 <p>{movieSelected.title}</p>
-                <p><span>{movieSession.day.date}</span> <span>{movieSession.name}</span></p>
+                <p><span>{movieSelected.session.day.date}</span> <span>{movieSelected.session.name}</span></p>
             </div>
             <div className='infos'>
                 <strong>Ingressos</strong>
-                <p>Enola Holmes</p>
-                <p>24/06/2021 15:00</p>
+                {
+                    movieSelected.seats.map( (chair) => {
+                        return (
+                            <p>Assento {chair.name}</p>
+                        )
+                    } )
+                }
             </div>
             <div className='infos'>
                 <strong>Comprador</strong>
-                <p>Enola Holmes</p>
-                <p>24/06/2021 15:00</p>
+                <p>Nome: {movieSelected.buyer.name}</p>
+                <p>CPF: {movieSelected.buyer.cpf}</p>
             </div>
 
             <Link to="/">

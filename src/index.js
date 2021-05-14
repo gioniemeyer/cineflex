@@ -14,7 +14,6 @@ import './styles/style.css';
 function App() {
 
     const[movieSelected, setMovieSelected] = useState({});
-    const [movieSession, setMovieSession] = useState([]);
 
 return(
     <BrowserRouter>    
@@ -30,11 +29,11 @@ return(
             </Route>
 
             <Route path="/assentos/:idSessao" exact>
-                <MovieSeats movieSession={movieSession} setMovieSession={setMovieSession} movieSelected={movieSelected} setMovieSelected={setMovieSelected} />
+                <MovieSeats movieSelected={movieSelected} setMovieSelected={setMovieSelected} />
             </Route>
 
             <Route path="/sucesso" exact>
-                <SuccessPage movieSession={movieSession} movieSelected={movieSelected} />
+                <SuccessPage movieSelected={movieSelected} />
             </Route>
         </Switch>
 
