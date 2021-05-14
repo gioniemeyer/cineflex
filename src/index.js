@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState} from 'react';
 import ReactDom from 'react-dom';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
@@ -7,12 +7,14 @@ import Home from './components/Home';
 import MovieSessions from './components/MovieSessions';
 import MovieSeats from './components/MovieSeats';
 import SuccessPage from './components/SuccessPage';
-import Footer from './components/Footer';
 
 import './styles/reset.css';
 import './styles/style.css';
 
 function App() {
+
+    const[movieSelected, setMovieSelected] = useState({});
+
 return(
     <BrowserRouter>    
         <Header />
@@ -23,13 +25,11 @@ return(
             </Route>
             
             <Route path="/sessoes/:idFilme" exact>
-                <MovieSessions />
-                <Footer />
+                <MovieSessions movieSelected={movieSelected} setMovieSelected={setMovieSelected} />
             </Route>
 
             <Route path="/assentos/:idSessao" exact>
-                <MovieSeats />
-                <Footer />
+                <MovieSeats movieSelected={movieSelected} setMovieSelected={setMovieSelected} />
             </Route>
 
             <Route path="/sucesso" exact>

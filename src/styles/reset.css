@@ -55,7 +55,3 @@ a {
 strong {
     font-weight: bold;
 }
-
-* {
-    box-sizing: content-box;
-}

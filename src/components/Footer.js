@@ -1,8 +1,8 @@
-export default function Footer() {
+export default function Footer({movieSelected}) {
     return(
         <div className='footer'>
-            <img src='https://upload.wikimedia.org/wikipedia/pt/e/e6/Enola_Holmes_poster.jpeg'/>
-            <p>nome do filme</p>
+            <img src={movieSelected.posterURL}/>
+            <p>{movieSelected.title}</p>
         </div>
     )
 }

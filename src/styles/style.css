@@ -20,7 +20,7 @@ body {
 }
 
 .container {
-    margin: 67px 0 117px 0;
+    margin: 67px 0 200px 0;
     height: 100%;
     width: 100%;
     padding-top: 20px;
@@ -29,6 +29,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: scroll;
 }
 
 .movies {
@@ -141,6 +142,9 @@ input { margin-bottom: 8px;}
 }
 
 .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
     height: 117px;
     background-color: #C3CFD9;

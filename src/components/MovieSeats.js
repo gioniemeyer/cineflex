@@ -1,15 +1,18 @@
-import {Link, useParams} from 'react-router-dom';
+import {Link, useParams, useHistory} from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Legends from './Legends';
+import Form from './Form';
+import Footer from './Footer';
 
-export default function MovieSeats() {
+export default function MovieSeats({movieSelected, setMovieSelected}) {
 
+    let history = useHistory();
     const {idSessao} = useParams();
     const [movieSeats, setMovieSeats] = useState([]);
     const [buyer, setBuyer] = useState("");
     const [cpf, setCpf] = useState('');
-    const [infos, setInfos] = useState({});
+    const [chosenSeats, setChosenSeats] = useState([]);
 
     useEffect( () => {
         const request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/showtimes/${idSessao}/seats`)
@@ -36,20 +39,24 @@ export default function MovieSeats() {
         })
         setMovieSeats(newMovieSeats);
         for(let i = 0; i < newMovieSeats.length; i++) {
-            if(newMovieSeats[i].isChosen === true) {
-                array.push(newMovieSeats[i].name);
+            if(newMovieSeats[i].isChosen) {
+                array.push(parseInt(newMovieSeats[i].id)); //ver, preciso mudar pra filter
             }
         }
-        infos.ids = array;
-        setInfos(infos)
+        setChosenSeats(array);
     }
 
     function finishOrder() {
-        infos.name = buyer;
-        infos.cpf = cpf;
-        setInfos(infos);
-        const request = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/seats/book-many', infos);
-        request.then(alert)
+        const infos = {
+            ids: chosenSeats,
+            name: buyer,
+            cpf: cpf           
+        }
+        console.log(infos);
+        const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/seats/book-many',infos);
+        promise.then((resp) => {
+            history.push('/sucesso')
+            console.log(resp)});
     }
    
     return(
@@ -67,17 +74,13 @@ export default function MovieSeats() {
                 }
             </div>
             <Legends />
-            <form>
-                <p>Nome do comprador:</p>
-                <input value={buyer} onChange={e => setBuyer(e.target.value)} placeholder="Digite seu nome..."/>
-                <p>CPF do comprador:</p>
-                <input set={cpf} onChange={e => setCpf(e.target.value)} placeholder="Digite seu CPF..."/>
-            </form>
-            <Link to="/sucesso">
+            <Form buyer={buyer} setBuyer={setBuyer} cpf={cpf} setCpf={setCpf} />
+            <Link to={history}>
                 <button onClick={finishOrder}>
                     Reservar assento(s)
                 </button>
             </Link>
+            <Footer movieSelected={movieSelected} />
         </div>
     )
 }
