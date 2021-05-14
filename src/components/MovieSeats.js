@@ -5,14 +5,14 @@ import Legends from './Legends';
 import Form from './Form';
 import Footer from './Footer';
 
-export default function MovieSeats({movieSelected, setMovieSelected}) {
+export default function MovieSeats({movieSession, setMovieSession, movieSelected}) {
 
     let history = useHistory();
     const {idSessao} = useParams();
-    const [movieSeats, setMovieSeats] = useState([]);
     const [buyer, setBuyer] = useState("");
     const [cpf, setCpf] = useState('');
     const [chosenSeats, setChosenSeats] = useState([]);
+    const [movieSeats, setMovieSeats] = useState([]);
 
     useEffect( () => {
         const request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/showtimes/${idSessao}/seats`)
@@ -22,8 +22,11 @@ export default function MovieSeats({movieSelected, setMovieSelected}) {
                 x.isChosen = false;
             } )
             setMovieSeats(arrSeats);
+            setMovieSession(resp.data);
         })
     } ,[]);
+
+    console.log(movieSession);
 
     function toggleSelection(seat) {
         const array = [];
@@ -52,11 +55,10 @@ export default function MovieSeats({movieSelected, setMovieSelected}) {
             name: buyer,
             cpf: cpf           
         }
-        console.log(infos);
         const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/seats/book-many',infos);
         promise.then((resp) => {
             history.push('/sucesso')
-            console.log(resp)});
+        });
     }
    
     return(

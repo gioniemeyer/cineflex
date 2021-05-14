@@ -16,8 +16,6 @@ export default function MovieSessions({movieSelected, setMovieSelected}) {
         } );
     } ,[] );
 
-    console.log(movieSelected);
-
     return(
         <div className='container'>
             <h1>Selecione o horário</h1>

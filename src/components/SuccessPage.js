@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 
-export default function SuccessPage() {
+export default function SuccessPage({movieSelected, movieSession}) {
     return(
         <div className='container'>
             <div className="infos">
@@ -8,16 +8,16 @@ export default function SuccessPage() {
             </div>
             <div className='infos'>
                 <strong>Filme e sessão</strong>
+                <p>{movieSelected.title}</p>
+                <p><span>{movieSession.day.date}</span> <span>{movieSession.name}</span></p>
+            </div>
+            <div className='infos'>
+                <strong>Ingressos</strong>
                 <p>Enola Holmes</p>
                 <p>24/06/2021 15:00</p>
             </div>
             <div className='infos'>
-                <strong>Filme e sessão</strong>
-                <p>Enola Holmes</p>
-                <p>24/06/2021 15:00</p>
-            </div>
-            <div className='infos'>
-                <strong>Filme e sessão</strong>
+                <strong>Comprador</strong>
                 <p>Enola Holmes</p>
                 <p>24/06/2021 15:00</p>
             </div>
