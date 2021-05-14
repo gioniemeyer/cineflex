@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 
-export default function DaysOfSessions({sessionDays, setSessionDays, day}) {
+export default function DaysOfSessions({day}) {
     return(
         <div className='dayOfSession'>
             <p>{day.weekday} - {day.date}</p>
